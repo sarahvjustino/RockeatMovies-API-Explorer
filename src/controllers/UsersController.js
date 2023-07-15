@@ -1,3 +1,5 @@
+const { hash } = require("bcryptjs")
+
 const appError = require("../utils/appError")
 
 class UsersController {
