@@ -29,4 +29,4 @@ app.use((error, request, response, next) => {
 })
 
 const PORT = 3000;
-app.listen(PORT, () => `Server is running on PORT ${PORT}`);
+app.listen(PORT);
