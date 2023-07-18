@@ -1,7 +1,7 @@
 const { hash, compare } = require("bcryptjs")
 const appError = require("../utils/appError")
 const sqliteConnection = require("../database/sqlite");
-const { use } = require("../routes/users.routes");
+const knex = require("../database/knex");
 
 class UsersController {
     async create(request, response) {
@@ -65,6 +65,14 @@ class UsersController {
         updated_at = DATETIME('now')
         WHERE id = ?
         `, [user.name, user.email, user.password, id])
+
+        return response.json()
+    }
+
+    async delete(request, response) {
+        const { id } = request.params;
+
+        await knex("users").where({ id }).delete();
 
         return response.json()
     }
