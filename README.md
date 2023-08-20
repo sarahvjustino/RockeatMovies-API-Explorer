@@ -1,6 +1,6 @@
 # RocketMovies API Explorer
 
-Bem-vindo ao RocketMovies API Explorer! Esta é a minha primeira aplicação em Node.js, desenvolvida com entusiasmo para permitir que os usuários cadastrem informações sobre filmes, como nome, descrição, notas e criem tags para facilitar a identificação posterior.
+Bem-vindo ao RocketMovies API Explorer! Esta é a minha primeira aplicação em Node.js, desenvolvida para permitir que os usuários cadastrem informações sobre filmes, como nome, descrição, notas e criem tags para facilitar a identificação posterior.
 
 ## Tecnologias Utilizadas
 
@@ -58,4 +58,5 @@ Agora você está pronto para iniciar o servidor da API:
 npm start
 
 ```
+
 O servidor será executado em http://localhost:3000.
