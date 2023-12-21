@@ -1,5 +1,5 @@
 const { hash, compare } = require("bcryptjs")
-const appError = require("../utils/appError")
+const appError = require("../utils/AppError")
 const sqliteConnection = require("../database/sqlite");
 const knex = require("../database/knex");
 
@@ -24,11 +24,11 @@ class UsersController {
 
     async update(request, response) {
         const { name, email, password, old_password } = request.body;
-        const { id } = request.params;
+        const user_id = request.user.id;
 
         const database = await sqliteConnection();
 
-        const user = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
+        const user = await database.get("SELECT * FROM users WHERE id = (?)", [user_id]);
 
         if (!user) {
             throw new appError("Usuário não encontrado!");
@@ -64,13 +64,13 @@ class UsersController {
         password = ?,
         updated_at = DATETIME('now')
         WHERE id = ?
-        `, [user.name, user.email, user.password, id])
+        `, [user.name, user.email, user.password, user_id])
 
         return response.json()
     }
 
     async delete(request, response) {
-        const { id } = request.params;
+        const { user_id } = request.user.id;
 
         await knex("users").where({ id }).delete();
 
