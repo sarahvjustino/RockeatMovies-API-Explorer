@@ -22,7 +22,7 @@ class MovieNotesController {
 
         await knex("movie_tags").insert(tagsInsert)
 
-        response.json()
+        return response.json()
 
     }
 
@@ -53,7 +53,7 @@ class MovieNotesController {
                     "movie_notes.user_id"
                 ])
                 .where("movie_notes.user_id", user_id)
-                .whereLike("title", `%${title}%`)
+                .whereLike("movies_notes.title", `%${title}%`)
                 .whereIn("name", filteredTags)
                 .innerJoin("movie_notes", "movie_notes.id", "movie_tags.note_id")
                 .orderBy("movie_notes.title")
